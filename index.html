@@ -1,0 +1,41 @@
+<!doctype html>
+<html ng-app="toDo">
+<head>
+	<script src="lib/angular.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controller.js"></script>
+
+	<meta charset="UTF-8">
+	<title>Angular ToDo List</title>
+</head>
+<body ng-controller="toDoController">
+<div>
+
+	<form ng-submit="addItem($event)">
+	<input type="text" id="toDoItem" ng-model="toDoItem" autofocus/>
+	<!---<input type="button" ng-click="addItem($event)" value="Add Item" />--->
+	<input type="submit" value="Add Item" />
+	</form>
+	
+	<table>
+		<tr><h3>To Do List: </h3></tr>
+		<tr ng-repeat="item in toDoList">
+			<td><input type="checkbox" ng-model="item.isDone" ng-change="markDone($event)" /></td>
+			<td>{{item.name}}</td>
+		</tr>
+	</table>	
+		<tr><hr style="width:400px;float:left;"/></tr>
+	<table>
+		<tr><h3>Done List: </h3></tr>
+		<tr>
+			<td>
+				<ul>
+					<li ng-repeat="item2 in doneList">{{item2.name}}</li>
+				</ul>
+			</td>
+		</tr>
+	</table>
+	
+</div>
+</body>
+</html>
